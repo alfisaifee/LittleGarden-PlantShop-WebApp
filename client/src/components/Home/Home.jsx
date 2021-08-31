@@ -1,13 +1,11 @@
 import React from "react";
-import { Typography, Box, Button, TextField } from "@material-ui/core";
+import { Typography, Box, Button } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./styles";
 import { createTheme } from "@material-ui/core/styles";
 import plant from "../assets/images/plantMain.png";
 import FeatureList from "./FeatureList/FeatureList";
-import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
-import SignIn from "../Login/SignIn";
-import Register from "../Login/Register";
+import Subscription from "./Subscription/Subscription";
 
 const Home = () => {
   const theme = createTheme({
@@ -19,9 +17,7 @@ const Home = () => {
     <div classes={classes.home}>
       <Grid container>
         <Grid item xs={7}>
-          <Register />
-          {/* 
-          
+          <Box mt={18} />
           <Typography variant="h3" className={classes.slogan}>
             Bring Calm To
           </Typography>
@@ -39,7 +35,7 @@ const Home = () => {
           </Typography>
           <div className={classes.buttonContainer}>
             <Button className={classes.button}>Learn More</Button>
-          </div>  */}
+          </div>
         </Grid>
         <Grid item xs={5}>
           <img src={plant} alt="" className={classes.plant} />
@@ -51,25 +47,7 @@ const Home = () => {
         </div>
       </Grid>
       <FeatureList />
-      <div className={classes.subsContainer}>
-        <Typography variant="body2" className={classes.text}>
-          STAY IN THE LOOP
-        </Typography>
-        <Typography variant="body2" className={classes.text}>
-          Stay in the loop with special offers, plant-parenting tips, and more.
-        </Typography>
-        <div className={classes.emailContainer}>
-          <TextField
-            id="outlined"
-            label="Email"
-            variant="outlined"
-            className={classes.textField}
-          />
-          <Button className={classes.subscriptionButton}>
-            <SubscriptionsIcon />
-          </Button>
-        </div>
-      </div>
+      <Subscription />
     </div>
   );
 };

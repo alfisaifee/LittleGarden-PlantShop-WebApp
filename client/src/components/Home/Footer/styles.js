@@ -2,9 +2,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
   footer: {
+    width: "100%",
+    height: "75px",
     boxShadow: "none",
     background: "#c5a183",
-    height: "100%",
+    overflow: "auto",
   },
 
   toolbar: {

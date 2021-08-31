@@ -6,6 +6,7 @@ export default makeStyles((theme) => ({
   appBar: {
     boxShadow: "none",
     background: "transparent",
+    padding: "10px",
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
@@ -67,7 +68,7 @@ export default makeStyles((theme) => ({
   button: {
     fontSize: "14px",
     textTransform: "none",
-    marginRight: theme.spacing(4),
+    marginRight: theme.spacing(2),
   },
   iconRoot: {
     textAlign: "center",

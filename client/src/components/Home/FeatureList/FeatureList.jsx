@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Button,
   IconButton,
   Card,
   CardActionArea,
@@ -80,7 +79,7 @@ const FeatureList = () => {
       </IconButton>
       {featurePlants.slice(index, index + cardCount).map((plant) => (
         <Card key={plant.id} className={classes.card}>
-          <CardActionArea>
+          <CardActionArea onClick={() => console.log("clicked")}>
             <CardMedia
               component="img"
               image={plant.image}
@@ -91,9 +90,6 @@ const FeatureList = () => {
               <div className={classes.cardContent}>
                 <Typography variant="body2">{plant.name}</Typography>
                 <Typography variant="body2">{plant.price}</Typography>
-                <Button size="small" variant="outlined">
-                  Shop
-                </Button>
               </div>
             </CardContent>
           </CardActionArea>

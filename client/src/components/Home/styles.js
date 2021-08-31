@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles((theme) => ({
   home: {
     width: "100%",
+    minHeight: "100%",
   },
   slogan: {
     fontWeight: 900,
@@ -41,44 +42,6 @@ export default makeStyles((theme) => ({
     marginLeft: theme.spacing(25),
     fontWeight: 800,
     fontSize: "32px",
-  },
-  subsContainer: {
-    paddingTop: theme.spacing(5),
-    paddingBottom: theme.spacing(6),
-    background: "#c5a183",
-  },
-  text: {
-    paddingBottom: theme.spacing(5),
-    fontSize: "15px",
-    fontWeight: "bold",
-  },
-  textField: {
-    marginTop: theme.spacing(4),
-    "& label.Mui-focused": {
-      color: "black",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "black",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "black",
-      },
-      "&:hover fieldset": {
-        borderColor: "black",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "black",
-      },
-    },
-  },
-  emailContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  subscriptionButton: {
-    marginTop: theme.spacing(4),
   },
   gridContainer: {
     display: "flex",

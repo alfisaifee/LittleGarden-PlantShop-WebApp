@@ -2,14 +2,13 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles(() => ({
   root: {
-    height: "100%",
-    width: "100%",
-    marginTop: "40px",
+    minHeight: "75vh",
+    paddingTop: "3rem",
+    textAlign: "center",
   },
   featureText: { fontWeight: 800, fontSize: "28px" },
-  text: { marginTop: "50px" },
   textField: {
-    width: "50%",
+    width: "25%",
     marginTop: "30px",
     "& label.Mui-focused": {
       color: "black",

@@ -1,8 +1,10 @@
 .App {
+  margin: 0;
   text-align: center;
-  /* background-color: blueviolet; */
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  min-height: 100%;
   background: linear-gradient(0deg, #fdfcfb 0%, #c28f65 100%);
+  display: table;
+  /* overflow: auto; */
 }
 /* #c28f65 */

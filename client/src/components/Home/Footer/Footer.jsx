@@ -29,16 +29,16 @@ const Footer = () => {
         </div>
         <div className={classes.grow}></div>
         <div>
-          <IconButton aria-label="instagram" color="inherit">
+          <IconButton color="inherit">
             <Instagram />
           </IconButton>
-          <IconButton aria-label="instagram" color="inherit">
+          <IconButton color="inherit">
             <Facebook />
           </IconButton>
-          <IconButton aria-label="instagram" color="inherit">
+          <IconButton color="inherit">
             <Pinterest />
           </IconButton>
-          <IconButton aria-label="instagram" color="inherit">
+          <IconButton color="inherit">
             <Twitter />
           </IconButton>
         </div>
