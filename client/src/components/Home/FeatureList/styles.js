@@ -9,7 +9,8 @@ export default makeStyles((theme) => ({
     justifyContent: "space-around",
     marginTop: "50px",
     marginBottom: "50px",
-    paddingBottom: "100px",
+    paddingBottom: "150px",
+    paddingTop: "75px",
   },
 
   cardContent: {

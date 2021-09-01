@@ -36,7 +36,7 @@ export default makeStyles((theme) => ({
   },
   featureContainer: {
     float: "left",
-    marginTop: theme.spacing(6),
+    marginTop: theme.spacing(10),
   },
   featureText: {
     marginLeft: theme.spacing(25),

@@ -41,9 +41,7 @@ const Home = () => {
           <img src={plant} alt="" className={classes.plant} />
         </Grid>
         <div className={classes.featureContainer}>
-          <Box component="span" className={classes.featureText}>
-            Our Featured
-          </Box>
+          <Typography className={classes.featureText}>Our Featured</Typography>
         </div>
       </Grid>
       <FeatureList />

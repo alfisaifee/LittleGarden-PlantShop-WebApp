@@ -5,8 +5,9 @@ export default makeStyles((theme) => ({
     width: "100%",
     height: "75px",
     boxShadow: "none",
-    background: "#c5a183",
+    background: "#224229",
     overflow: "auto",
+    color: "#fcf9f3",
   },
 
   toolbar: {

@@ -7,6 +7,7 @@ export default makeStyles((theme) => ({
     boxShadow: "none",
     background: "transparent",
     padding: "10px",
+
     [theme.breakpoints.up("sm")]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,

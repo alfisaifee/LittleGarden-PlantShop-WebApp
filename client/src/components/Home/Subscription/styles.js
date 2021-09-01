@@ -2,9 +2,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles(() => ({
   subsContainer: {
-    paddingTop: "40px",
-    paddingBottom: "48px",
-    background: "#c5a183",
+    paddingTop: "100px",
+    paddingBottom: "100px",
+    background: "#224229",
+    borderTop: "1px solid #fff",
+    color: "#fcf9f3",
   },
   text: {
     paddingBottom: "40px",
@@ -18,24 +20,25 @@ export default makeStyles(() => ({
   },
   subscriptionButton: {
     marginTop: "16px",
+    color: "#fcf9f3",
   },
   textField: {
     marginTop: "16px",
     "& label.Mui-focused": {
-      color: "black",
+      color: "#fcf9f3",
     },
     "& .MuiInput-underline:after": {
-      borderBottomColor: "black",
+      borderBottomColor: "#fcf9f3",
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "black",
+        borderColor: "#fcf9f3",
       },
       "&:hover fieldset": {
-        borderColor: "black",
+        borderColor: "#fcf9f3",
       },
       "&.Mui-focused fieldset": {
-        borderColor: "black",
+        borderColor: "#fcf9f3",
       },
     },
   },
