@@ -1,11 +1,12 @@
 import React from "react";
-import { Typography, Box, Button } from "@material-ui/core";
+import { Typography, Box, Button, Divider } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./styles";
 import { createTheme } from "@material-ui/core/styles";
 import plant from "../assets/images/plantMain.png";
 import FeatureList from "./FeatureList/FeatureList";
 import Subscription from "./Subscription/Subscription";
+import Service from "./Service";
 
 const Home = () => {
   const theme = createTheme({
@@ -14,8 +15,8 @@ const Home = () => {
   const classes = useStyles(theme);
 
   return (
-    <div classes={classes.home}>
-      <Grid container>
+    <div className={classes.home}>
+      <Grid container className={classes.homeLanding}>
         <Grid item xs={7}>
           <Box mt={18} />
           <Typography variant="h3" className={classes.slogan}>
@@ -40,11 +41,11 @@ const Home = () => {
         <Grid item xs={5}>
           <img src={plant} alt="" className={classes.plant} />
         </Grid>
-        <div className={classes.featureContainer}>
-          <Typography className={classes.featureText}>Our Featured</Typography>
-        </div>
       </Grid>
+      <Divider variant="middle" className={classes.divider} />
       <FeatureList />
+      <Divider variant="middle" className={classes.divider} />
+      <Service />
       <Subscription />
     </div>
   );

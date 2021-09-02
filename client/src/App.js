@@ -47,10 +47,12 @@ function App() {
       >
         <div className="App">
           <Navbar />
+
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/shop" component={Shopping} />
+
           <Footer />
         </div>
       </UserContext.Provider>

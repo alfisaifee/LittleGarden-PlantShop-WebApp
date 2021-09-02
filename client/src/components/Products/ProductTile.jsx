@@ -71,6 +71,7 @@ const ProductTile = ({ product }) => {
               starDimension="20px"
               numberOfStars={5}
               name="rating"
+              starEmptyColor="#C8C8C8"
             />
             <Typography variant="body1" className={classes.text}>
               {product.size}

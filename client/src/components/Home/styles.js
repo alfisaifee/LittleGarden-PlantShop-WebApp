@@ -5,6 +5,9 @@ export default makeStyles((theme) => ({
     width: "100%",
     minHeight: "100%",
   },
+  homeLanding: {
+    paddingBottom: "30px",
+  },
   slogan: {
     fontWeight: 900,
     marginLeft: theme.spacing(25),
@@ -34,18 +37,11 @@ export default makeStyles((theme) => ({
     width: theme.spacing(65),
     height: theme.spacing(80),
   },
-  featureContainer: {
-    float: "left",
-    marginTop: theme.spacing(10),
-  },
-  featureText: {
-    marginLeft: theme.spacing(25),
-    fontWeight: 800,
-    fontSize: "32px",
-  },
+
   gridContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
+  divider: { backgroundColor: "#224229", height: "3 px" },
 }));

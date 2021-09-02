@@ -3,8 +3,9 @@
   text-align: center;
   width: 100%;
   min-height: 100%;
-  background-image: #fcf9f3;
+  background-color: #fcf9f3;
+  /* background-image: linear-gradient(315deg, #deebdd 0%, #bbdbbe 74%); */
   display: table;
-  /* overflow: auto; */
 }
-/* #c28f65 */
+
+/* #fcf9f3 */

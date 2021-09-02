@@ -16,7 +16,6 @@ const Subscription = () => {
       <div className={classes.emailContainer}>
         <TextField
           id="outlined"
-          label="Email"
           variant="outlined"
           className={classes.textField}
         />

@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
     paddingRigth: "30px",
   },
   filterOptionText: {
-    fontSize: "20px",
+    fontSize: "18px",
     fontFamily: "Nibs, serif",
   },
   titleText: {

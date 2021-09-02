@@ -14,12 +14,14 @@ export default makeStyles((theme) => ({
     },
   },
   title: {
-    fontSize: "18px",
+    fontSize: "20px",
     flexGrow: 1,
     alignItems: "center",
     display: "flex",
     textDecoration: "none",
     marginRight: theme.spacing(4),
+    fontFamily: "Bradley Hand, cursive",
+    fontWeight: "bold",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -67,9 +69,10 @@ export default makeStyles((theme) => ({
     },
   },
   button: {
-    fontSize: "14px",
+    fontSize: "16px",
     textTransform: "none",
     marginRight: theme.spacing(2),
+    fontFamily: "Nibs, serif",
   },
   iconRoot: {
     textAlign: "center",
