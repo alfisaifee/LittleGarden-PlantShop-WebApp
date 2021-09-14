@@ -11,7 +11,7 @@ const SignIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const { setUserData, setIsLoggedIn } = useContext(UserContext);
+  const { setUserData, setIsLoggedIn, getCartItems } = useContext(UserContext);
   const history = useHistory();
   const classes = useStyles();
 
@@ -25,8 +25,9 @@ const SignIn = () => {
         user: loginRes.data.user,
       });
       setIsLoggedIn(true);
+      getCartItems(loginRes.data.user.id);
       localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/");
+      history.goBack("/");
     } catch (err) {
       err.response.data.message && setError(err.response.data.message);
     }
@@ -49,7 +50,6 @@ const SignIn = () => {
               size="small"
               variant="filled"
               onChange={(e) => setEmail(e.target.value)}
-              value={email}
             />
           </Grid>
           <Grid item xs={12}>
@@ -60,7 +60,6 @@ const SignIn = () => {
               size="small"
               type="password"
               variant="filled"
-              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </Grid>

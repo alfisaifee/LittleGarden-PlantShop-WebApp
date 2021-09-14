@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   CardMedia,
-  CardActionArea,
   CardContent,
   Typography,
   Button,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import StarRatings from "react-star-ratings";
+import axios from "../../axios";
+import { useHistory } from "react-router-dom";
+import UserContext from "../../context/userContext";
 
 const useStyles = makeStyles({
   productRoot: {
@@ -35,33 +37,81 @@ const useStyles = makeStyles({
   },
   productMedia: {
     height: "80%",
+    display: "flex",
+    justifyContent: "left",
   },
   cartButton: {
     marginTop: "10px",
   },
+  discountTag: {
+    height: "6%",
+    width: "25%",
+
+    backgroundColor: "red",
+    color: "white",
+  },
+  grow: { flex: 0.8 },
 });
 
-const ProductTile = ({ product }) => {
+const ProductTile = ({ product, user, userStatus }) => {
   const classes = useStyles();
+  const history = useHistory();
+  const { userData, getCartItems } = useContext(UserContext);
+
+  const handleAddToCart = async () => {
+    if (!userStatus) {
+      history.push("/login");
+    } else {
+      try {
+        const item = { productId: product._id };
+        await axios.post(`/shop/cart/${user.id}`, item);
+        alert(product.name + " added to cart");
+        console.log(userData);
+        getCartItems(userData.user.id);
+      } catch (err) {
+        alert(err.response.data);
+      }
+    }
+  };
 
   return (
     <div>
       <Card className={classes.productRoot}>
         <CardMedia
           className={classes.productMedia}
-          component="img"
-          image={product.image}
+          component="div"
+          image={product.imageURL}
           height={5}
           alt={product.name}
-        ></CardMedia>
+        >
+          {product.discount > 0 ? (
+            <div className={classes.discountTag}>{product.discount}% Off</div>
+          ) : null}
+        </CardMedia>
         <CardContent className={classes.cardContentContainer}>
           <div className={classes.cardContent}>
             <Typography variant="body1" className={classes.text}>
               {product.name}
             </Typography>
-            <Typography variant="body1" className={classes.text}>
-              {product.price}
-            </Typography>
+            <div className={classes.grow}></div>
+            {product.discount > 0 ? (
+              <Typography color="secondary" className={classes.text}>
+                {"$" + getDiscountPrice(product.price, product.discount)}
+              </Typography>
+            ) : null}
+            {product.discount > 0 ? (
+              <Typography
+                style={{ textDecorationLine: "line-through" }}
+                variant="body1"
+                className={classes.text}
+              >
+                {"$" + product.price}
+              </Typography>
+            ) : (
+              <Typography variant="body1" className={classes.text}>
+                {"$" + product.price}
+              </Typography>
+            )}
           </div>
           <div className={classes.cardContent}>
             <StarRatings
@@ -74,16 +124,37 @@ const ProductTile = ({ product }) => {
               starEmptyColor="#C8C8C8"
             />
             <Typography variant="body1" className={classes.text}>
-              {product.size}
+              {getProductSize(product.size)}
             </Typography>
           </div>
-          <Button className={classes.cartButton} variant="outlined">
-            Add to Cart
-          </Button>
+          {product.inStock === 0 ? (
+            <Button disabled className={classes.cartButton}>
+              Out of Stock
+            </Button>
+          ) : (
+            <Button
+              className={classes.cartButton}
+              variant="outlined"
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </Button>
+          )}
         </CardContent>
       </Card>
     </div>
   );
 };
 
+const getDiscountPrice = (price, discount) => {
+  return Math.floor((price - price * (discount / 100)) * 100) / 100;
+};
+
+const getProductSize = (size) => {
+  if (size === "xs") return "Extra Small";
+  else if (size === "s") return "Small";
+  else if (size === "m") return "Medium";
+  else if (size === "l") return "Large";
+  return "Extra Large";
+};
 export default ProductTile;

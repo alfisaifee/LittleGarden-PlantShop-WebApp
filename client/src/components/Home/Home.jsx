@@ -1,18 +1,69 @@
-import React from "react";
-import { Typography, Box, Button, Divider } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import useStyles from "./styles";
-import { createTheme } from "@material-ui/core/styles";
+import React, { useState, useEffect } from "react";
+import { Typography, Box, Button, Divider, Grid } from "@material-ui/core";
 import plant from "../assets/images/plantMain.png";
-import FeatureList from "./FeatureList/FeatureList";
-import Subscription from "./Subscription/Subscription";
+import FeatureList from "./FeatureList";
+import Subscription from "./Subscription";
 import Service from "./Service";
+import axios from "../../axios";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  home: {
+    width: "100%",
+    minHeight: "100%",
+  },
+  homeLanding: {
+    paddingBottom: "30px",
+  },
+  slogan: {
+    fontWeight: 900,
+    marginLeft: "200px",
+    textAlign: "left",
+  },
+  description: {
+    marginTop: "40px",
+    marginLeft: "200px",
+    textAlign: "left",
+  },
+  buttonContainer: {
+    marginTop: "40px",
+    marginLeft: "200px",
+    textAlign: "left",
+  },
+  button: {
+    color: "white",
+    backgroundColor: "black",
+    fontSize: "12px",
+    textTransform: "none",
+    "&:hover": {
+      backgroundColor: "black",
+    },
+  },
+  plant: {
+    backgroundColor: "transparent",
+    width: "520px",
+    height: "640px",
+  },
+  gridContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  divider: { backgroundColor: "#224229", height: "4px", margin: "0px 190px" },
+});
 
 const Home = () => {
-  const theme = createTheme({
-    spacing: 8,
-  });
-  const classes = useStyles(theme);
+  const classes = useStyles();
+  const [bestSellers, setBestSellers] = useState([]);
+
+  useEffect(() => {
+    const getBestSellers = async () => {
+      const products = await axios.get("/shop/products/best");
+      setBestSellers(products.data);
+    };
+
+    getBestSellers();
+  }, [bestSellers]);
 
   return (
     <div className={classes.home}>
@@ -43,7 +94,7 @@ const Home = () => {
         </Grid>
       </Grid>
       <Divider variant="middle" className={classes.divider} />
-      <FeatureList />
+      <FeatureList plants={bestSellers} />
       <Divider variant="middle" className={classes.divider} />
       <Service />
       <Subscription />

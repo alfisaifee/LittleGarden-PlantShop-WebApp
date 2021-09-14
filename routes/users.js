@@ -6,7 +6,6 @@ import Users from "../models/User.js";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import config from "config";
-import User from "../models/User.js";
 import auth from "../middleware/auth.js";
 
 const router = express.Router();
@@ -50,7 +49,7 @@ router.post("/login", async (req, res) => {
     }
     const user = await Users.findOne({ email: userLoggingIn.email });
     if (!user)
-      return res.json({
+      return res.status(400).json({
         message: "User does not exist. Register to create an account",
       });
     const isMatch = await bcrypt.compare(userLoggingIn.password, user.password);
@@ -73,13 +72,14 @@ router.post("/login", async (req, res) => {
 router.post("/tokenIsValid", async (req, res) => {
   try {
     const token = req.headers.authorization.split("Bearer ")[1];
+
     if (!token) return res.json(false);
 
     const verified = jwt.verify(token, config.get("jwtsecret"));
 
     if (!verified) return res.json(false);
 
-    const user = await User.findById(verified.id);
+    const user = await Users.findById(verified.id);
 
     if (!user) return res.json(false);
 
@@ -90,7 +90,7 @@ router.post("/tokenIsValid", async (req, res) => {
 });
 
 router.get("/", auth, async (req, res) => {
-  const user = await User.findById(req.user);
+  const user = await Users.findById(req.user);
   res.json({ username: user.username, id: user._id });
 });
 

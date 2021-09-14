@@ -7,7 +7,32 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { Instagram, Facebook, Pinterest, Twitter } from "@material-ui/icons";
-import useStyles from "./styles";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  footer: {
+    width: "100%",
+    height: "75px",
+    boxShadow: "none",
+    background: "#224229",
+    overflow: "auto",
+    color: "#fcf9f3",
+  },
+
+  toolbar: {
+    width: "100%",
+    paddingLeft: "50px",
+    paddingRight: "50px",
+  },
+  link: {
+    padding: "10px",
+    cursor: "pointer",
+    "&:hover": {
+      textDecoration: "none",
+    },
+  },
+  grow: { flex: 1 },
+});
 
 const Footer = () => {
   const classes = useStyles();

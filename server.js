@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import users from "./routes/users.js";
+import products from "./routes/products.js";
+import cart from "./routes/cart.js";
 import config from "config";
 
 const app = express();
@@ -27,8 +29,7 @@ mongoose.connect(
 
 //routes
 app.use("/users", users);
+app.use("/shop", products);
+app.use("/shop", cart);
 
-// app.get("/getUsername", verifyJWT, (req, res) => {
-//   res.json({ isLoggedIn: true, username: req.user.username });
-// });
 app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));

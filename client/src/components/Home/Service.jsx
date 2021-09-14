@@ -62,7 +62,7 @@ const Service = () => {
             space, we can provide you with selected
           </Typography>
           <Typography className={classes.textDescription}>
-            plants, and configure you space.
+            plants, and configure your space.
           </Typography>
           <Box mt={6} />
           <Button variant="contained" className={classes.serviceButton}>

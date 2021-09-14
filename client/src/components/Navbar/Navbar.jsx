@@ -8,26 +8,58 @@ import {
   Button,
 } from "@material-ui/core";
 import { ShoppingCart, Eco } from "@material-ui/icons";
-import useStyles from "./styles";
-import { createTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
-import UserContext from "../../../context/userContext";
+import UserContext from "../../context/userContext";
+
+const useStyles = makeStyles({
+  appBar: {
+    boxShadow: "none",
+    background: "transparent",
+    padding: "10px",
+  },
+  title: {
+    fontSize: "20px",
+    flexGrow: 1,
+    alignItems: "center",
+    display: "flex",
+    marginRight: "8px",
+    fontFamily: "Nibs, serif",
+    fontWeight: "bold",
+  },
+  grow: {
+    flexGrow: 15,
+  },
+  button: {
+    fontSize: "15px",
+    marginRight: "20px",
+  },
+  iconRoot: {
+    textAlign: "center",
+    marginLeft: "40px",
+    marginRight: "10px",
+  },
+});
 
 const Navbar = () => {
-  const theme = createTheme({
-    spacing: 8,
-  });
-  const classes = useStyles(theme);
+  const classes = useStyles();
   const history = useHistory();
-  const { setUserData, isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { setUserData, isLoggedIn, setIsLoggedIn, cartItems, setCartItems } =
+    useContext(UserContext);
 
   const handleLoginLogOut = () => {
     if (isLoggedIn) {
       localStorage.removeItem("auth-token");
+      localStorage.removeItem("cart");
       setUserData({ token: "", user: "" });
       setIsLoggedIn(false);
+      setCartItems([]);
     }
     history.push("/login");
+  };
+
+  const handleCartClick = () => {
+    history.push("/cart");
   };
 
   return (
@@ -67,13 +99,22 @@ const Navbar = () => {
           >
             {isLoggedIn ? "Logout" : "Login"}
           </Button>
-          <div className={classes.button}>
-            <IconButton aria-label="Show cart items" color="inherit">
-              <Badge badgeContent={2} color="secondary">
+
+          {isLoggedIn ? (
+            <IconButton
+              aria-label="Show cart items"
+              color="inherit"
+              className={classes.button}
+              onClick={handleCartClick}
+            >
+              <Badge
+                badgeContent={cartItems ? cartItems.length : null}
+                color="secondary"
+              >
                 <ShoppingCart />
               </Badge>
             </IconButton>
-          </div>
+          ) : null}
         </Toolbar>
       </AppBar>
     </>

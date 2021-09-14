@@ -1,5 +1,4 @@
 {
     "mongoURI": "mongodb+srv://little_garden:oMEao24besbTAYiz@cluster0.nisox.mongodb.net/littleGardendb?retryWrites=true&w=majority",
     "jwtsecret" : "ps_myjwtsecret"
-
 }
